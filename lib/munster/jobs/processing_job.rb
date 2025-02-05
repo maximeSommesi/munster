@@ -19,7 +19,7 @@ module Munster
       if webhook.handler.valid?(webhook.request)
         logger.info { "#{webhook_details_for_logs} starting to process" }
         webhook.handler.process(webhook)
-        webhook.processed! if webhook.processing?
+        webhook.handler.processed if webhook.processeing?
         logger.info { "#{webhook_details_for_logs} processed" }
       else
         logger.info { "#{webhook_details_for_logs} did not pass validation by the handler. Marking it `failed_validation`." }
