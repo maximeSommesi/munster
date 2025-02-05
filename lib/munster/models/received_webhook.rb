@@ -16,6 +16,7 @@ module Munster
       s.permit_transition(:processing, :processed)
       s.permit_transition(:processing, :error)
       s.permit_transition(:processed, :error)
+      s.permit_transition(:received, :error)
       s.permit_transition(:error, :received)
 
       s.after_committed_transition_to(:received) do |webhook|
